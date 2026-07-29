@@ -1,0 +1,14 @@
+{% extends "base.html"%}
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+    <h1>Contact Us</h1>
+    <p>Contact us at:</p>
+    <p>
+        {% for key,value in details.items() %}
+        <h3>{{key}}</h3>
+        <label>Email:</label> {{ value.Email }} <br>
+        <label>Phone:</label> {{ value.phone }} <br>
+        {% endfor %}
+    </p>
+{% endblock %}

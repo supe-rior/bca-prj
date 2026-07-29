@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Home
+{% endblock %}
+{% block content %}
+    <h1>Users</h1>
+    <div class="cotainer">
+        <div class="user-data">
+            <a href="/adduser" class="btnadd">Add User</a>
+            <form action="search">
+                <input type="text" name="search" placeholder="Search username" value="{{ request.args.get('search','')}}">
+                <input type="submit" value="search">
+                <a href="{{ url_for('home') }}">
+                    <button type="button">Show all</button>
+                </a>
+            </form>
+            <table class="table table-responsive">
+                <tr>
+                    <th>SN</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                {% for user in users %}
+                <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.password}}</td>
+                    <td>
+                        {% if user.status==1 %}
+                            <span>Active</span>
+                        {% else %}
+                            <span style="color: red ;">Inactive</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a class="btnedit" href="/updateuser/{{user.id}}">Edit</a>
+                        <a class="btndel" href="/deleteuser/{{user.id}}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

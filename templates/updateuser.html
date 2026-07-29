@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+{% block title %}updateuser{% endblock %}
+
+{% block content %}
+<h1>Update User</h1>
+<form method="post">
+    <input type="text" name="username" value="{{user.username}}" placeholder="Username"><br><br>
+    <input type="password" name="password" value="{{user.password}}" placeholder="password"><br><br>
+    <input type="submit" name="submit" value="Update User">
+</form>
+{% endblock %}
